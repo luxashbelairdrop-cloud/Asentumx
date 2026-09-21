@@ -39,7 +39,7 @@ async function monitoringNode() {
         const shortAddress = VALIDATOR_ADDRESS.substring(0, 6) + "..." + VALIDATOR_ADDRESS.slice(-4);
 
         const pesan = `📊 *Laporan Status Node Asentum (PaaS Monitored)*:\n\n` +
-                      `🔹 *Validator:* \`\${shortAddress}\`\n` +
+                      `🔹 *Validator:* \`` + shortAddress + `\`\n` +
                       `🔹 *Status:* ${status === 'active' ? '🟢 Active' : '🔴 Offline/Inactive'}\n` +
                       `🔹 *Total Stake:* ${balance} ASE\n` +
                       `🔹 *Total Rewards:* ${earnings} ASE`;
@@ -49,9 +49,10 @@ async function monitoringNode() {
         console.error('Gagal mengambil data dari API:', error.message);
         
         const shortAddress = VALIDATOR_ADDRESS.substring(0, 6) + "..." + VALIDATOR_ADDRESS.slice(-4);
-        // PERBAIKAN: Mengganti format string di bawah ini agar variabel shortAddress terbaca sempurna
+        
+        // PERBAIKAN PERMANEN: Menggunakan operator penggabungan string (+) tanpa backslash
         const pesanGagal = `📊 *Laporan Status Node Asentum (PaaS Monitored)*:\n\n` +
-                           `🔹 *Validator:* \`\${shortAddress}\`\n` +
+                           `🔹 *Validator:* \`` + shortAddress + `\`\n` +
                            `🔹 *Status:* 🔴 Offline/Inactive\n` +
                            `🔹 *Total Stake:* 0 ASE\n` +
                            `🔹 *Total Rewards:* 0 ASE\n\n` +
